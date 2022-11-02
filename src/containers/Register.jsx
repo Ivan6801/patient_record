@@ -1,16 +1,15 @@
+/* eslint-disable no-alert */
+/* eslint-disable react/jsx-indent */
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { TextField, MenuItem } from '@mui/material/';
 import { Form, useFormik, FormikProvider } from 'formik';
 import * as Yup from 'yup';
 import './styles/App.css';
 
 export default function Registrar() {
-  const navigate = useNavigate();
-
   const FormSchema = Yup.object().shape({
     name: Yup.string().required('Nombre requerido').min(5, 'Se requieren cinco caracteres'),
     firstName: Yup.string()
@@ -28,7 +27,7 @@ export default function Registrar() {
     EmergencyPhone: Yup.string().required('Teléfono principal requerido'),
     phone: Yup.string().when('$EmergencyPhone', (EmergencyPhone, schema) => (EmergencyPhone === 'United States + 1' === 'Mexico + 52'
       ? schema.required('Numero requerido')
-      : schema.nullable().optional())),
+      : schema.nullable().optional())).required('Numero requerido'),
     emergencyContact: Yup.string().required('Contacto de emergencia requerido'),
     sgm: Yup.string().required('Seguro de gastos médicos requerido'),
   });
@@ -51,8 +50,7 @@ export default function Registrar() {
     },
     validationSchema: FormSchema,
     onSubmit: (formValue) => {
-      navigate('/information');
-      console.log(formValue);
+      alert(JSON.stringify(formValue, null, 2));
     },
   });
 
