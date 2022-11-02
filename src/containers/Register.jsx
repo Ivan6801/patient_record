@@ -45,7 +45,7 @@ export default function Registrar() {
       mei: formData.get('mei'),
     };
     addToData(data);
-    console.log(data);
+    // console.log(data);
   };
 
   return (
