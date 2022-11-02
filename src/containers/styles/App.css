@@ -50,11 +50,10 @@ ul {
   grid-column: 1 / 4;
 }
 
-.contact-form form button,
+/* .contact-form form button,
 .contact-form form input,
 .contact-form form select,
 .contact-form form textarea {
-  padding: 0.7em;
   border: none;
   background: none;
   outline: 0;
@@ -65,7 +64,7 @@ ul {
   background: #ffffff;
   border: 2px solid #393939;
   border-radius: 10px;
-}
+} */
 
 .contact-form form button {
   background: #061949;
@@ -116,6 +115,15 @@ ul {
   justify-content: center;
   align-items: center;
   margin-top: 30px;
+}
+
+.input {
+  border: none !important;
+  background: none !important;
+  outline: 0 !important;
+  width: 230px !important;
+  background: #ffffff !important;
+  border-radius: 10px !important;
 }
 
 /* LARGE SIZE */
@@ -173,13 +181,8 @@ ul {
     grid-template-columns: 1fr;
   }
   .contact-form form input {
-    width: 300px;
-    height: 50px;
-  }
-  .contact-form form select {
-    width: 300px;
-    height: 50px;
-  }
+    width: 200px;
+}
   .block button {
     margin-top: 20px;
     margin-bottom: 20px;
