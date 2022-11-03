@@ -87,7 +87,7 @@ export default function Registrar() {
           </nav>
           <h3>{t('register.registrar')}</h3>
           <FormikProvider value={formik}>
-            <Form noValidate autoComplete="off">
+            <Form noValidate className="form-border" autoComplete="off">
               <div>
                 <TextField
                   style={{ width: '230px' }}
