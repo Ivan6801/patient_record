@@ -31,7 +31,7 @@ export default function Registrar() {
       ? schema.required('Numero requerido')
       : schema.nullable().optional())).required('Numero requerido'),
     emergencyContact: Yup.string().required('Contacto de emergencia requerido'),
-    sgm: Yup.string().required('Seguro de gastos médicos requerido'),
+    // sgm: Yup.string().required('Seguro de gastos médicos requerido'),
   });
 
   const formik = useFormik({
@@ -47,7 +47,7 @@ export default function Registrar() {
       EmergencyPhone: '',
       phone: '',
       emergencyContact: '',
-      sgm: '',
+      // sgm: '',
     },
     validationSchema: FormSchema,
     onSubmit: (formValue) => {
@@ -74,6 +74,7 @@ export default function Registrar() {
     `${t('state.co')}`,
   ];
   const phoneType = [`${t('phone.tf')}`, `${t('phone.tm')}`];
+  const EmergencyPhoneType = ['None', 'United States + 1', 'Mexico + 52'];
 
   return (
     <section className="container">
@@ -201,16 +202,59 @@ export default function Registrar() {
                   type="email"
                 />
               </div>
-              <div>
-                {/* <MuiPhoneNumber
-                  {...getFieldProps('EmergencyPhone')}
-                  error={Boolean(touched.EmergencyPhone && errors.EmergencyPhone)}
-                  helperText={touched.EmergencyPhone && errors.EmergencyPhone}
-                  className="MuiPhoneNumber"
-                  defaultCountry="us"
-                  label={t('register.telefonoEmeergencia')}
-                /> */}
-              </div>
+              <section>
+                <div>
+                  <TextField
+                    style={{ width: '230px' }}
+                    {...getFieldProps('EmergencyPhone')}
+                    error={Boolean(touched.EmergencyPhone && errors.EmergencyPhone)}
+                    helperText={touched.EmergencyPhone && errors.EmergencyPhone}
+                    id="EmergencyPhone"
+                    className="input"
+                    select
+                    label="Teléfono emergencia"
+                    variant="outlined"
+                  >
+                    {EmergencyPhoneType.map((option) => (
+                      <MenuItem key={option} value={option}>
+                        {option}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                </div>
+                <div>
+                  {formik.values.EmergencyPhone === 'United States + 1' && (
+                    <div>
+                      <TextField
+                        style={{ width: '230px' }}
+                        {...getFieldProps('phone')}
+                        error={Boolean(touched.EmergencyPhone && errors.phone)}
+                        helperText={touched.EmergencyPhone && errors.phone}
+                        id="outlined-basic"
+                        placeholder="+ 1"
+                        variant="outlined"
+                        type="tel"
+                      />
+                    </div>
+                  )}
+                </div>
+                <div>
+                  {formik.values.EmergencyPhone === 'Mexico + 52' && (
+                    <div>
+                      <TextField
+                        style={{ width: '230px' }}
+                        {...getFieldProps('phone')}
+                        error={Boolean(touched.EmergencyPhone && errors.phone)}
+                        helperText={touched.EmergencyPhone && errors.phone}
+                        id="outlined-basic"
+                        placeholder="+ 52"
+                        variant="outlined"
+                        type="tel"
+                      />
+                    </div>
+                  )}
+                </div>
+              </section>
               <div>
                 <TextField
                   style={{ width: '230px' }}
