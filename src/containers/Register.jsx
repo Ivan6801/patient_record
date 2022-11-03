@@ -1,15 +1,17 @@
 /* eslint-disable no-alert */
-/* eslint-disable react/jsx-indent */
-/* eslint-disable no-console */
-/* eslint-disable max-len */
 /* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable max-len */
 import React from 'react';
 import { TextField, MenuItem } from '@mui/material/';
 import { Form, useFormik, FormikProvider } from 'formik';
+import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
+import Header from '../components/Header';
 import './styles/App.css';
 
 export default function Registrar() {
+  const { t } = useTranslation('global');
+
   const FormSchema = Yup.object().shape({
     name: Yup.string().required('Nombre requerido').min(5, 'Se requieren cinco caracteres'),
     firstName: Yup.string()
@@ -63,16 +65,16 @@ export default function Registrar() {
     // setFieldValue,
   } = formik;
 
-  const genderTypes = ['Masculino', 'Femenino'];
+  const genderTypes = [`${t('gender.m')}`, `${t('gender.f')}`];
   const maritalStatusType = [
-    'Soltero',
-    'Casado',
-    'Divorciado',
-    'Separación en proceso judicial',
-    'Viudo',
-    'Concubinato',
+    `${t('state.s')}`,
+    `${t('state.c')}`,
+    `${t('state.d')}`,
+    `${t('state.spj')}`,
+    `${t('state.v')}`,
+    `${t('state.co')}`,
   ];
-  const phoneType = ['Teléfono fijo', 'Teléfono móvil'];
+  const phoneType = [`${t('phone.tf')}`, `${t('phone.tm')}`];
   const EmergencyPhoneType = ['None', 'United States + 1', 'Mexico + 52'];
   const sgmType = ['Gnp', 'Axa', 'Metlife', 'Mediexcel', 'Privado', 'Chubb'];
 
@@ -80,7 +82,10 @@ export default function Registrar() {
     <section className="container">
       <div className="contact-wrapper animated bounceInUp">
         <div className="contact-form">
-          <h3>Registrar Paciente</h3>
+          <nav>
+            <Header />
+          </nav>
+          <h3>{t('register.registrar')}</h3>
           <FormikProvider value={formik}>
             <Form noValidate autoComplete="off">
               <div>
@@ -90,7 +95,7 @@ export default function Registrar() {
                   error={Boolean(touched.name && errors.name)}
                   helperText={touched.name && errors.name}
                   id="outlined-basic"
-                  label="Nombre"
+                  label={t('register.nombre')}
                   variant="outlined"
                   type="text"
                 />
@@ -102,7 +107,7 @@ export default function Registrar() {
                   error={Boolean(touched.firstName && errors.firstName)}
                   helperText={touched.firstName && errors.firstName}
                   id="outlined-basic"
-                  label="Apellido Paterno"
+                  label={t('register.apellidoPaterno')}
                   variant="outlined"
                   type="text"
                 />
@@ -114,7 +119,7 @@ export default function Registrar() {
                   error={Boolean(touched.lastName && errors.lastName)}
                   helperText={touched.lastName && errors.lastName}
                   id="outlined-basic"
-                  label="Apellido Materno"
+                  label={t('register.apellidoMaterno')}
                   variant="outlined"
                   type="text"
                 />
@@ -139,7 +144,7 @@ export default function Registrar() {
                   id="gender"
                   className="input"
                   select
-                  label="Género"
+                  label={t('register.genero')}
                   variant="outlined"
                 >
                   {genderTypes.map((option) => (
@@ -158,7 +163,7 @@ export default function Registrar() {
                   id="maritalStatus"
                   className="input"
                   select
-                  label="Estado civil"
+                  label={t('register.estadoCivil')}
                   variant="outlined"
                 >
                   {maritalStatusType.map((option) => (
@@ -175,7 +180,7 @@ export default function Registrar() {
                   error={Boolean(touched.mainPhone && errors.mainPhone)}
                   helperText={touched.mainPhone && errors.mainPhone}
                   id="outlined-basic"
-                  label="Teléfono principal"
+                  label={t('register.telefonoPrincipal')}
                   variant="outlined"
                   type="tel"
                 />
@@ -189,7 +194,7 @@ export default function Registrar() {
                   id="phoneTypes"
                   className="input"
                   select
-                  label="Tipo teléfono"
+                  label={t('register.tipoTelefono')}
                   variant="outlined"
                 >
                   {phoneType.map((option) => (
@@ -206,7 +211,7 @@ export default function Registrar() {
                   error={Boolean(touched.mainMail && errors.mainMail)}
                   helperText={touched.mainMail && errors.mainMail}
                   id="outlined-basic"
-                  label="Correo Principal"
+                  label={t('register.correoPrincipal')}
                   variant="outlined"
                   type="email"
                 />
@@ -221,7 +226,7 @@ export default function Registrar() {
                     id="EmergencyPhone"
                     className="input"
                     select
-                    label="Teléfono emergencia"
+                    label={t('register.telefonoEmeergencia')}
                     variant="outlined"
                   >
                     {EmergencyPhoneType.map((option) => (
@@ -272,7 +277,7 @@ export default function Registrar() {
                   error={Boolean(touched.emergencyContact && errors.emergencyContact)}
                   helperText={touched.emergencyContact && errors.emergencyContact}
                   id="outlined-basic"
-                  label="Contacto de emergencia"
+                  label={t('register.emergencyContact')}
                   variant="outlined"
                   type="email"
                 />
@@ -286,7 +291,7 @@ export default function Registrar() {
                   id="sgm"
                   className="input"
                   select
-                  label="Seguro de gastos médicos"
+                  label={t('register.sgm')}
                   variant="outlined"
                 >
                   {sgmType.map((option) => (
@@ -298,14 +303,14 @@ export default function Registrar() {
               </div>
               <div className="block">
                 <button type="button" onClick={prevHandleSubmit}>
-                  Guardar
+                  {t('saved.guardar')}
                 </button>
               </div>
             </Form>
           </FormikProvider>
         </div>
-        <div className="contact-info">
-          <h4>Posibles coincidencias</h4>
+        <div className="contact-info fadeInDown">
+          <h4>{t('footer.posibles')}</h4>
           <p className="contect-description">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero provident ipsam
             necessitatibus repellendus?
