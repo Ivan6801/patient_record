@@ -1,0 +1,41 @@
+{
+  "header": {
+    "hello-world": "Hello World"
+  },
+  "register": {
+    "registrar": "Patient Register",
+    "nombre": "Name",
+    "apellidoPaterno": "First name",
+    "apellidoMaterno": "Last name",
+    "genero": "Gender",
+    "estadoCivil": "Marital status",
+    "telefonoPrincipal": "Main phone",
+    "tipoTelefono": "Phone type",
+    "correoPrincipal": "Main mail",
+    "telefonoEmeergencia": "Emergency phone",
+    "emergencyContact": "Emergency contact",
+    "sgm": "medical expenses insurance"
+  },
+  "saved": {
+    "guardar": "Save"
+  },
+  "footer": {
+    "posibles": "Possible matches"
+  },
+  "gender": {
+    "m": "Male",
+    "f": "Feminine"
+  },
+  "state": {
+    "s": "Single",
+    "c": "Married",
+    "d": "Divorced",
+    "spj": "Sparation in judicial process",
+    "v": "Widower",
+    "co": "Concubinage"
+  },
+  "phone": {
+    "tf": "Landline phone",
+    "tm": "Mobile phone"
+  }
+}

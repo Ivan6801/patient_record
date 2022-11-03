@@ -1,0 +1,41 @@
+{
+  "header": {
+    "hello-world": "Hola mundo"
+  },
+  "register": {
+    "registrar": "Registrar Paciente",
+    "nombre": "Nombre",
+    "apellidoPaterno": "Apellido paterno",
+    "apellidoMaterno": "Apellido materno",
+    "genero": "Género",
+    "estadoCivil": "Estado civil",
+    "telefonoPrincipal": "Teléfono principal",
+    "tipoTelefono": "Tipo teléfono",
+    "correoPrincipal": "Correo principal",
+    "telefonoEmeergencia": "Teléfono emergencia",
+    "emergencyContact": "Contacto de emergencia",
+    "sgm": "Seguro de gastos médicos"
+  },
+  "saved": {
+    "guardar": "Guardar"
+  },
+  "footer": {
+    "posibles": "Posibles coincidencias"
+  },
+  "gender": {
+    "m": "Masculino",
+    "f": "Femenino"
+  },
+  "state": {
+    "s": "Soltero",
+    "c": "Casado",
+    "d": "Divorciado",
+    "spj": "Sparación en proceso judicial",
+    "v": "Viudo",
+    "co": "Concubinato"
+  },
+  "phone": {
+    "tf": "Teléfono fijo",
+    "tm": "Teléfono móvil"
+  }
+}
