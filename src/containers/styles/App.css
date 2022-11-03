@@ -1,3 +1,20 @@
+.App {
+  text-align: left;
+  height: auto;
+}
+
+.bg-light {
+  background-color: #fafafa !important;
+  transition: .3s;
+  color: #393939;
+}
+
+.bg-dark {
+  background-color: #586080 !important;
+  transition: .3s;
+  color: #fafafa;
+}
+
 .container {
   max-width: 100%;
   margin-left: auto;
@@ -17,9 +34,9 @@ ul {
   padding: 1em;
 }
 
-.contact-form {
+/* .contact-form {
   background: #ffffff;
-}
+} */
 
 .contact-form h3 {
   font-size: 20px;
@@ -48,6 +65,12 @@ ul {
 
 .contact-form form .block {
   grid-column: 1 / 4;
+}
+
+.form-border {
+  box-shadow: 0 0 3px 0 #393939;
+  border-radius: 10px;
+  padding: 20px;
 }
 
 /* .contact-form form button,
@@ -124,7 +147,6 @@ ul {
   background: none !important;
   outline: 0 !important;
   width: 230px !important;
-  background: #ffffff !important;
   border-radius: 10px !important;
 }
 
@@ -174,7 +196,7 @@ ul {
     grid-template-columns: 250px 250px;
     grid-template-rows: 1fr;
     gap: 10px;
-  }  
+  }
 }
 
 @media (max-width: 500px) {
