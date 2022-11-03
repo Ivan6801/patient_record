@@ -3,7 +3,7 @@
     "hello-world": "Hello World"
   },
   "register": {
-    "registrar": "Patient Register",
+    "registrar": "PATIENT REGISTER",
     "nombre": "Name",
     "apellidoPaterno": "First name",
     "apellidoMaterno": "Last name",

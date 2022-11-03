@@ -3,7 +3,7 @@
     "hello-world": "Hola mundo"
   },
   "register": {
-    "registrar": "Registrar Paciente",
+    "registrar": "REGISTER PACIENTE",
     "nombre": "Nombre",
     "apellidoPaterno": "Apellido paterno",
     "apellidoMaterno": "Apellido materno",

@@ -3,3 +3,10 @@
   flex-direction: row;
   justify-content: flex-end;
 }
+
+.Header-boton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
