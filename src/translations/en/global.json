@@ -7,14 +7,15 @@
     "nombre": "Name",
     "apellidoPaterno": "First name",
     "apellidoMaterno": "Last name",
+    "fechaDeNacimiento": "Birthday is required",
     "genero": "Gender",
-    "estadoCivil": "Marital status",
+    "estadoCivil": "Civil status",
     "telefonoPrincipal": "Main phone",
     "tipoTelefono": "Phone type",
     "correoPrincipal": "Main mail",
     "telefonoEmeergencia": "Emergency phone",
     "emergencyContact": "Emergency contact",
-    "sgm": "medical expenses insurance"
+    "sgm": "Health insurance"
   },
   "saved": {
     "guardar": "Save"

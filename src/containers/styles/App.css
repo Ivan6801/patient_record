@@ -89,7 +89,7 @@ ul {
   border-radius: 10px;
 } */
 
-.contact-form form button {
+#contact-form-form-button {
   background: #061949;
   box-shadow: 2px 4px 4px 1px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
@@ -106,8 +106,8 @@ ul {
   transition: background-color .5s ease-out;
 }
 
-.contact-form form button:hover,
-.contact-form form button:focus {
+#contact-form-form-button:hover,
+#contact-form-form-button:focus {
   background: #3a4879;
   color: #fff;
   transition: background-color .5s ease-out;
@@ -127,12 +127,17 @@ ul {
 .contact-info p {
   text-align: center;
   margin: 0 0 1rem 0;
-  color: #fff;
+  /* color: #fff; */
   font-size: 20px;
+}
+
+.contect-title {
+  color: #fff;
 }
 
 .contect-description {
   font-size: 16px !important;
+  color: #fff;
 }
 
 .block {
@@ -148,6 +153,13 @@ ul {
   outline: 0 !important;
   width: 230px !important;
   border-radius: 10px !important;
+}
+
+.MuiPhoneNumber {
+  border: 1px solid #C0C0C0 !important;
+  padding: 4px !important;
+  width: 230px !important;
+  border-radius: 5px !important;
 }
 
 /* LARGE SIZE */

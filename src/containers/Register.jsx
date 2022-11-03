@@ -7,6 +7,7 @@ import { Form, useFormik, FormikProvider } from 'formik';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import Header from '../components/Header';
+import Asynchronous from '../components/Asynchronous';
 import './styles/App.css';
 
 export default function Registrar() {
@@ -20,10 +21,9 @@ export default function Registrar() {
     lastName: Yup.string()
       .required('Apellido materno requerido')
       .min(5, 'Se requieren cinco caracteres'),
-    dateOfBirth: Yup.string().required('Fecha de nacimiento requerido'),
+    dateOfBirth: Yup.string().required(t('register.fechaDeNacimiento')),
     gender: Yup.string().required('Género requerido'),
     maritalStatus: Yup.string().required('Estado civil requerido'),
-    mainPhone: Yup.string().required('Teléfono principal requerido'),
     phoneTypes: Yup.string().required('Tipo teléfono requerido'),
     mainMail: Yup.string().required('Correo principal requerido'),
     EmergencyPhone: Yup.string().required('Teléfono principal requerido'),
@@ -42,7 +42,6 @@ export default function Registrar() {
       dateOfBirth: '',
       gender: '',
       maritalStatus: '',
-      mainPhone: '',
       phoneTypes: '',
       mainMail: '',
       EmergencyPhone: '',
@@ -75,8 +74,6 @@ export default function Registrar() {
     `${t('state.co')}`,
   ];
   const phoneType = [`${t('phone.tf')}`, `${t('phone.tm')}`];
-  const EmergencyPhoneType = ['None', 'United States + 1', 'Mexico + 52'];
-  const sgmType = ['Gnp', 'Axa', 'Metlife', 'Mediexcel', 'Privado', 'Chubb'];
 
   return (
     <section className="container">
@@ -176,18 +173,6 @@ export default function Registrar() {
               <div>
                 <TextField
                   style={{ width: '230px' }}
-                  {...getFieldProps('mainPhone')}
-                  error={Boolean(touched.mainPhone && errors.mainPhone)}
-                  helperText={touched.mainPhone && errors.mainPhone}
-                  id="outlined-basic"
-                  label={t('register.telefonoPrincipal')}
-                  variant="outlined"
-                  type="tel"
-                />
-              </div>
-              <div>
-                <TextField
-                  style={{ width: '230px' }}
                   {...getFieldProps('phoneTypes')}
                   error={Boolean(touched.phoneTypes && errors.phoneTypes)}
                   helperText={touched.phoneTypes && errors.phoneTypes}
@@ -216,60 +201,16 @@ export default function Registrar() {
                   type="email"
                 />
               </div>
-              <section>
-                <div>
-                  <TextField
-                    style={{ width: '230px' }}
-                    {...getFieldProps('EmergencyPhone')}
-                    error={Boolean(touched.EmergencyPhone && errors.EmergencyPhone)}
-                    helperText={touched.EmergencyPhone && errors.EmergencyPhone}
-                    id="EmergencyPhone"
-                    className="input"
-                    select
-                    label={t('register.telefonoEmeergencia')}
-                    variant="outlined"
-                  >
-                    {EmergencyPhoneType.map((option) => (
-                      <MenuItem key={option} value={option}>
-                        {option}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </div>
-                <div>
-                  {formik.values.EmergencyPhone === 'United States + 1' && (
-                    <div>
-                      <TextField
-                        style={{ width: '230px' }}
-                        {...getFieldProps('phone')}
-                        error={Boolean(touched.EmergencyPhone && errors.phone)}
-                        helperText={touched.EmergencyPhone && errors.phone}
-                        id="outlined-basic"
-                        placeholder="+ 1"
-                        variant="outlined"
-                        type="tel"
-                      />
-                    </div>
-                  )}
-                </div>
-                <div>
-                  {formik.values.EmergencyPhone === 'Mexico + 52' && (
-                    <div>
-                      <TextField
-                        style={{ width: '230px' }}
-                        {...getFieldProps('phone')}
-                        error={Boolean(touched.EmergencyPhone && errors.phone)}
-                        helperText={touched.EmergencyPhone && errors.phone}
-                        id="outlined-basic"
-                        placeholder="+ 52"
-                        variant="outlined"
-                        type="tel"
-                      />
-                    </div>
-                  )}
-                </div>
-
-              </section>
+              <div>
+                {/* <MuiPhoneNumber
+                  {...getFieldProps('EmergencyPhone')}
+                  error={Boolean(touched.EmergencyPhone && errors.EmergencyPhone)}
+                  helperText={touched.EmergencyPhone && errors.EmergencyPhone}
+                  className="MuiPhoneNumber"
+                  defaultCountry="us"
+                  label={t('register.telefonoEmeergencia')}
+                /> */}
+              </div>
               <div>
                 <TextField
                   style={{ width: '230px' }}
@@ -283,26 +224,10 @@ export default function Registrar() {
                 />
               </div>
               <div>
-                <TextField
-                  style={{ width: '230px' }}
-                  {...getFieldProps('sgm')}
-                  error={Boolean(touched.sgm && errors.sgm)}
-                  helperText={touched.sgm && errors.sgm}
-                  id="sgm"
-                  className="input"
-                  select
-                  label={t('register.sgm')}
-                  variant="outlined"
-                >
-                  {sgmType.map((option) => (
-                    <MenuItem key={option} value={option}>
-                      {option}
-                    </MenuItem>
-                  ))}
-                </TextField>
+                <Asynchronous />
               </div>
               <div className="block">
-                <button type="button" onClick={prevHandleSubmit}>
+                <button id="contact-form-form-button" type="button" onClick={prevHandleSubmit}>
                   {t('saved.guardar')}
                 </button>
               </div>
@@ -310,7 +235,7 @@ export default function Registrar() {
           </FormikProvider>
         </div>
         <div className="contact-info fadeInDown">
-          <h4>{t('footer.posibles')}</h4>
+          <h4 className="contect-title">{t('footer.posibles')}</h4>
           <p className="contect-description">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero provident ipsam
             necessitatibus repellendus?
