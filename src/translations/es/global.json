@@ -7,6 +7,7 @@
     "nombre": "Nombre",
     "apellidoPaterno": "Apellido paterno",
     "apellidoMaterno": "Apellido materno",
+    "fechaDeNacimiento": "Fecha de nacimiento requerido",
     "genero": "Género",
     "estadoCivil": "Estado civil",
     "telefonoPrincipal": "Teléfono principal",
