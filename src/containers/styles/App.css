@@ -114,6 +114,24 @@ ul {
   outline: 0;
 }
 
+.boton-parte2:hover,
+.boton-parte2:focus {
+  background: #3a4879;
+  color: #fff;
+  transition: background-color .5s ease-out;
+  outline: 0;
+}
+
+.boton-parte2 {
+  width: 200px;
+  height: 50px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #061949;
+  color: #fff;
+  text-decoration: none;
+}
+
 /* CONTACT INFO */
 .contact-info {
   background: #3a4879;

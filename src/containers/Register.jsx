@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-alert */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable max-len */
 import React from 'react';
 import { TextField, MenuItem } from '@mui/material/';
+import { Link } from 'react-router-dom';
 import { Form, useFormik, FormikProvider } from 'formik';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
@@ -284,6 +286,9 @@ export default function Registrar() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero provident ipsam
             necessitatibus repellendus?
           </p>
+          <center>
+            <Link className="boton-parte2" to="/search-patients">Parte #2</Link>
+          </center>
         </div>
       </div>
     </section>

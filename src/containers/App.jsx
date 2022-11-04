@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Registrar from './Register';
-import Information from './Information';
+import SearchPatients from './SearchPatients';
 import ThemeContext from '../contexts/ThemeContext';
 import './styles/App.css';
 
@@ -15,7 +15,7 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Registrar />} />
-            <Route path="/information" element={<Information />} />
+            <Route path="/search-patients" element={<SearchPatients />} />
           </Routes>
         </BrowserRouter>
       </div>
