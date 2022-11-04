@@ -37,3 +37,23 @@
   background-color: #3A4879;
   transition: .3s;
 }
+
+@media (max-width: 964px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: center;
+  }
+}
+@media (max-width: 600px) {
+  .cards {
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
+  }
+}
