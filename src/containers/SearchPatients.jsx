@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-curly-brace-presence */
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-shadow */
 import React, {
@@ -6,6 +8,8 @@ import React, {
 import { useTranslation } from 'react-i18next';
 import CircularProgress from '@mui/material/CircularProgress';
 import Header from '../components/Header';
+import Search from '../components/Search';
+import ArticleUsers from '../components/ArticleUsers';
 
 import './styles/SearchPatients.css';
 
@@ -49,21 +53,18 @@ export default function SearchPatients() {
       <section className="Search">
         <div className="Search-left">
           <div className="Search-input">
-            <input
-              type="text"
-              placeholder="Buscador"
-              value={search}
-              ref={searchInput}
-              onChange={handleSearch}
+            <Search
+              search={search}
+              searchInput={searchInput}
+              handleSearch={handleSearch}
               className="handle-serarch"
             />
           </div>
           <div>
             <h1>
-              {' '}
               Resultado
               {countUsar > 1 ? 's' : ''}
-              {' : '}
+              {': '}
               {countUsar}
             </h1>
           </div>
@@ -71,32 +72,12 @@ export default function SearchPatients() {
             {loading && (<CircularProgress />)}
             {(!loading && !filteredUsers.length) && <p style={{ color: 'red' }}>Not found character 😮</p>}
             {filteredUsers.map((item) => (
-              <article key={item.id} className="card">
-                <img className="character-img" src={item.image} alt={item.name} />
-                <p className="character-info">
-                  {' '}
-                  <small className="character-name">
-                    {t('register.nombre')}
-                    {' '}
-                    :
-                  </small>
-                  {' '}
-                  {item.name}
-                </p>
-                <p className="character-info">
-                  <small className="character-name">
-                    {t('register.genero')}
-                    {' '}
-                    :
-                  </small>
-                  {item.gender}
-                </p>
-              </article>
+              <ArticleUsers key={item.id} item={item} />
             ))}
           </div>
         </div>
         <div className="Search-right">
-          <h1>Información del paciente</h1>
+          <h1>{t('search.ip')}</h1>
         </div>
       </section>
     </>
