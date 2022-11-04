@@ -1,32 +1,35 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 export default function ArticleUsers(props) {
   const { t } = useTranslation('global');
   const { item } = props;
   return (
-    <article key={item.id} className="card">
-      <img className="character-img" src={item.image} alt={item.name} />
-      <p className="character-info">
-        {' '}
-        <small className="character-name">
-          {t('register.nombre')}
+    <Link to={`/search-patients/${item.id}`}>
+      <article key={item.id} className="card">
+        <img className="character-img" src={item.image} alt={item.name} />
+        <p className="character-info">
           {' '}
-          :
-        </small>
-        {' '}
-        {item.name}
-      </p>
-      <p className="character-info">
-        <small className="character-name">
-          {t('register.genero')}
+          <small className="character-name">
+            {t('register.nombre')}
+            {' '}
+            :
+          </small>
           {' '}
-          :
-        </small>
-        {item.gender}
-      </p>
-    </article>
+          {item.name}
+        </p>
+        <p className="character-info">
+          <small className="character-name">
+            {t('register.genero')}
+            {' '}
+            :
+          </small>
+          {item.gender}
+        </p>
+      </article>
+    </Link>
   );
 }

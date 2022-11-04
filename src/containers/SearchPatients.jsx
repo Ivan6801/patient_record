@@ -1,20 +1,15 @@
-/* eslint-disable react/jsx-curly-brace-presence */
-/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-shadow */
 import React, {
   useState, useEffect, useRef, useMemo, useCallback,
 } from 'react';
-import { useTranslation } from 'react-i18next';
 import CircularProgress from '@mui/material/CircularProgress';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import ArticleUsers from '../components/ArticleUsers';
-
 import './styles/SearchPatients.css';
 
 export default function SearchPatients() {
-  const { t } = useTranslation('global');
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -75,9 +70,6 @@ export default function SearchPatients() {
               <ArticleUsers key={item.id} item={item} />
             ))}
           </div>
-        </div>
-        <div className="Search-right">
-          <h1>{t('search.ip')}</h1>
         </div>
       </section>
     </>
