@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-concat */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-alert */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -227,6 +228,7 @@ export default function Registrar() {
                 <div>
                   {formik.values.EmergencyPhone === 'United States + 1' && (
                     <div>
+                      <label>{t('register.telefonoPrincipal')}</label>
                       <TextField
                         style={{ width: '230px' }}
                         {...getFieldProps('phone')}
@@ -243,6 +245,7 @@ export default function Registrar() {
                 <div>
                   {formik.values.EmergencyPhone === 'Mexico + 52' && (
                     <div>
+                      <label>{t('register.telefonoPrincipal')}</label>
                       <TextField
                         style={{ width: '230px' }}
                         {...getFieldProps('phone')}
