@@ -38,5 +38,9 @@
   "phone": {
     "tf": "Teléfono fijo",
     "tm": "Teléfono móvil"
+  },
+  "search":{
+    "busca": "Buscador",
+    "ip": "Información del paciente"
   }
 }

@@ -38,5 +38,9 @@
   "phone": {
     "tf": "Landline phone",
     "tm": "Mobile phone"
+  },
+  "search":{
+    "busca": "Search",
+    "ip": "Information of the patiente"
   }
 }
