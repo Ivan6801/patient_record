@@ -11,6 +11,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "formik": "^2.2.9",
+    "formik-material-ui": "^4.0.0-alpha.2",
     "i18next": "^22.0.4",
     "i18next-browser-languagedetector": "^7.0.0",
     "i18next-http-backend": "^2.0.1",

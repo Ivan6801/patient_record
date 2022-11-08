@@ -3,7 +3,7 @@
     "hello-world": "Hello World"
   },
   "register": {
-    "registrar": "Patient Register",
+    "registrar": "PATIENT REGISTER",
     "nombre": "Name",
     "apellidoPaterno": "First name",
     "apellidoMaterno": "Last name",
@@ -14,8 +14,7 @@
     "tipoTelefono": "Phone type",
     "correoPrincipal": "Main mail",
     "telefonoEmeergencia": "Emergency phone",
-    "emergencyContact": "Emergency contact",
-    "sgm": "Health insurance"
+    "emergencyContact": "Emergency contact"
   },
   "saved": {
     "guardar": "Save"
@@ -42,5 +41,21 @@
   "search":{
     "busca": "Search",
     "ip": "Information of the patiente"
+  },
+  "r": {
+    "nameRequired": "Name is required",
+    "apRequired": "Last name is required",
+    "amRequired": "Other is required",
+    "genderRequired": "Gender is required",
+    "civilStatus": "Civil status is required",
+    "phoneTypes": "Phone type is required",
+    "mainEmail": "Main mail is required",
+    "emergencyPhone": "Emergency phone is required",
+    "phone": "Phone is required",
+    "emergencyContact": "Emergency contact is required",
+    "sgm": "Health insurance is required"
+  },
+  "c": {
+    "nameCharacters": "Five characters are required"
   }
 }

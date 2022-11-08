@@ -180,6 +180,11 @@ ul {
   border-radius: 5px !important;
 }
 
+.registrar-input {
+  background-color: rgb(255, 255, 255) !important;
+  border-radius: 5px !important;
+}
+
 /* LARGE SIZE */
 
 @media (max-width: 872px) {

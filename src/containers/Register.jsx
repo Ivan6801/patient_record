@@ -17,24 +17,24 @@ export default function Registrar() {
   const { t } = useTranslation('global');
 
   const FormSchema = Yup.object().shape({
-    name: Yup.string().required('Nombre requerido').min(5, 'Se requieren cinco caracteres'),
+    name: Yup.string().required(t('r.nameRequired')).min(5, t('c.nameCharacters')),
     firstName: Yup.string()
-      .required('Apellido paterno requerido')
-      .min(5, 'Se requieren cinco caracteres'),
+      .required(t('r.apRequired'))
+      .min(5, 'c.nameCharacters'),
     lastName: Yup.string()
-      .required('Apellido materno requerido')
-      .min(5, 'Se requieren cinco caracteres'),
+      .required(t('r.amRequired'))
+      .min(5, 'c.nameCharacters'),
     dateOfBirth: Yup.string().required(t('register.fechaDeNacimiento')),
-    gender: Yup.string().required('Género requerido'),
-    maritalStatus: Yup.string().required('Estado civil requerido'),
-    phoneTypes: Yup.string().required('Tipo teléfono requerido'),
-    mainMail: Yup.string().required('Correo principal requerido'),
-    EmergencyPhone: Yup.string().required('Teléfono principal requerido'),
-    phone: Yup.string().when('$EmergencyPhone', (EmergencyPhone, schema) => (EmergencyPhone === 'United States + 1' === 'Mexico + 52'
-      ? schema.required('Numero requerido')
-      : schema.nullable().optional())).required('Numero requerido'),
-    emergencyContact: Yup.string().required('Contacto de emergencia requerido'),
-    // sgm: Yup.string().required('Seguro de gastos médicos requerido'),
+    gender: Yup.string().required(t('r.genderRequired')),
+    maritalStatus: Yup.string().required(t('r.civilStatus')),
+    phoneTypes: Yup.string().required(t('r.phoneTypes')),
+    mainMail: Yup.string().required(t('r.mainEmail')),
+    EmergencyPhone: Yup.string().required(t('r.emergencyPhone')),
+    phone: Yup.number().when('$EmergencyPhone', (EmergencyPhone, schema) => (EmergencyPhone === 'United States + 1' === 'Mexico + 52'
+      ? schema.required(t('r.phone'))
+      : schema.nullable().optional())).required(t('r.phone')),
+    emergencyContact: Yup.string().required(t('r.emergencyContact')),
+    sgm: Yup.array().required(t('r.sgm')),
   });
 
   const formik = useFormik({
@@ -50,7 +50,7 @@ export default function Registrar() {
       EmergencyPhone: '',
       phone: '',
       emergencyContact: '',
-      // sgm: '',
+      sgm: '',
     },
     validationSchema: FormSchema,
     onSubmit: (formValue) => {
@@ -64,7 +64,7 @@ export default function Registrar() {
     touched,
     handleSubmit: prevHandleSubmit,
     getFieldProps,
-    // setFieldValue,
+    setFieldValue,
   } = formik;
 
   const genderTypes = [`${t('gender.m')}`, `${t('gender.f')}`];
@@ -99,6 +99,7 @@ export default function Registrar() {
                   label={t('register.nombre')}
                   variant="outlined"
                   type="text"
+                  className="registrar-input"
                 />
               </div>
               <div>
@@ -111,6 +112,7 @@ export default function Registrar() {
                   label={t('register.apellidoPaterno')}
                   variant="outlined"
                   type="text"
+                  className="registrar-input"
                 />
               </div>
               <div>
@@ -123,6 +125,7 @@ export default function Registrar() {
                   label={t('register.apellidoMaterno')}
                   variant="outlined"
                   type="text"
+                  className="registrar-input"
                 />
               </div>
               <div>
@@ -134,6 +137,7 @@ export default function Registrar() {
                   id="outlined-basic"
                   variant="outlined"
                   type="date"
+                  className="registrar-input"
                 />
               </div>
               <div>
@@ -143,7 +147,7 @@ export default function Registrar() {
                   error={Boolean(touched.gender && errors.gender)}
                   helperText={touched.gender && errors.gender}
                   id="gender"
-                  className="input"
+                  className="registrar-input"
                   select
                   label={t('register.genero')}
                   variant="outlined"
@@ -162,7 +166,7 @@ export default function Registrar() {
                   error={Boolean(touched.maritalStatus && errors.maritalStatus)}
                   helperText={touched.maritalStatus && errors.maritalStatus}
                   id="maritalStatus"
-                  className="input"
+                  className="registrar-input"
                   select
                   label={t('register.estadoCivil')}
                   variant="outlined"
@@ -181,7 +185,7 @@ export default function Registrar() {
                   error={Boolean(touched.phoneTypes && errors.phoneTypes)}
                   helperText={touched.phoneTypes && errors.phoneTypes}
                   id="phoneTypes"
-                  className="input"
+                  className="registrar-input"
                   select
                   label={t('register.tipoTelefono')}
                   variant="outlined"
@@ -203,6 +207,7 @@ export default function Registrar() {
                   label={t('register.correoPrincipal')}
                   variant="outlined"
                   type="email"
+                  className="registrar-input"
                 />
               </div>
               <section>
@@ -213,7 +218,7 @@ export default function Registrar() {
                     error={Boolean(touched.EmergencyPhone && errors.EmergencyPhone)}
                     helperText={touched.EmergencyPhone && errors.EmergencyPhone}
                     id="EmergencyPhone"
-                    className="input"
+                    className="registrar-input"
                     select
                     label="Teléfono emergencia"
                     variant="outlined"
@@ -237,7 +242,8 @@ export default function Registrar() {
                         id="outlined-basic"
                         placeholder="+ 1"
                         variant="outlined"
-                        type="tel"
+                        type="number"
+                        className="registrar-input"
                       />
                     </div>
                   )}
@@ -254,7 +260,8 @@ export default function Registrar() {
                         id="outlined-basic"
                         placeholder="+ 52"
                         variant="outlined"
-                        type="tel"
+                        type="number"
+                        className="registrar-input"
                       />
                     </div>
                   )}
@@ -270,10 +277,27 @@ export default function Registrar() {
                   label={t('register.emergencyContact')}
                   variant="outlined"
                   type="email"
+                  className="registrar-input"
                 />
               </div>
               <div>
-                <Asynchronous />
+                <Asynchronous
+                  label={t('r.sgm')}
+                  {...getFieldProps('sgm')}
+                  error={Boolean(touched.sgm && errors.sgm)}
+                  helperText={touched.sgm && errors.sgm}
+                  onChange={(v, r) => setFieldValue('sgm', r)}
+                  options={[
+                    {
+                      id: 'Gnp',
+                      label: 'Gnp',
+                    },
+                    {
+                      id: 'Axa',
+                      label: 'Axa',
+                    },
+                  ]}
+                />
               </div>
               <div className="block">
                 <button id="contact-form-form-button" type="button" onClick={prevHandleSubmit}>
