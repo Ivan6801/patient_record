@@ -66,6 +66,7 @@
     "name": "Nombre",
     "birthday": "Fecha de nacimiento",
     "sgm": "Seguro de gastos médicos",
-    "phone": "Telefono principal"
+    "phone": "Telefono principal",
+    "intro": "Ver intro"
   }
 }

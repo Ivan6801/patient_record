@@ -28,7 +28,7 @@ export default function ArticleUsers(props) {
           :
         </small>
         <p className="character-date">{item.dob.date}</p>
-        <button onClick={() => handleClick(item)}>Ver infro</button>
+        <button className="character-button" onClick={() => handleClick(item)}>{t('i.intro')}</button>
       </p>
     </article>
   );

@@ -8,6 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
+import './styles/Favorite.css';
 
 export default function Favorite({
   id, name, img, dob, phone, sgm, deleteFavorite,
