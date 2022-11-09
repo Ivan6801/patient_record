@@ -32,7 +32,7 @@ export default function Registrar() {
         ? schema.required(t('r.phone'))
         : schema.nullable().optional()))
       .required(t('register.telefonoPrincipal')),
-    mainMail: Yup.string().email(),
+    mainMail: Yup.string().email(t('r.email')),
     EmergencyPhone: Yup.string().required(t('r.emergencyPhone')),
     phone: Yup.number()
       .when('$EmergencyPhone', (EmergencyPhone, schema) => ((EmergencyPhone === 'United States + 1') === 'Mexico + 52'
@@ -209,68 +209,6 @@ export default function Registrar() {
                     ))}
                   </TextField>
                 </div>
-
-                <section>
-                  <div>
-                    <TextField
-                      style={{ width: '230px' }}
-                      {...getFieldProps('phoneMain')}
-                      error={Boolean(touched.phoneMain && errors.phoneMain)}
-                      helperText={touched.phoneMain && errors.phoneMain}
-                      id="phoneMain"
-                      className="registrar-input"
-                      select
-                      label={t('register.telefonoPrincipal')}
-                      variant="outlined"
-                    >
-                      {phoneMainType.map((option) => (
-                        <MenuItem key={option} value={option}>
-                          {option}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-                  </div>
-                  <div>
-                    {formik.values.phoneMain === 'United States + 1' && (
-                      <div>
-                        <label>{t('register.telefonoPrincipal')}</label>
-                        <TextField
-                          style={{
-                            width: '100px', position: 'absolute', left: 160, top: 370,
-                          }}
-                          {...getFieldProps('phone')}
-                          error={Boolean(touched.phoneMain && errors.phone)}
-                          helperText={touched.phoneMain && errors.phone}
-                          id="outlined-basic"
-                          placeholder="+ 1"
-                          variant="outlined"
-                          type="number"
-                          className="registrar-input"
-                        />
-                      </div>
-                    )}
-                  </div>
-                  <div>
-                    {formik.values.phoneMain === 'Mexico + 52' && (
-                      <div>
-                        <label>{t('register.telefonoPrincipal')}</label>
-                        <TextField
-                          style={{
-                            width: '100px', position: 'absolute', left: 160, top: 370,
-                          }}
-                          {...getFieldProps('phone')}
-                          error={Boolean(touched.phoneMain && errors.phone)}
-                          helperText={touched.phoneMain && errors.phone}
-                          id="outlined-basic"
-                          placeholder="+ 52"
-                          variant="outlined"
-                          type="number"
-                          className="registrar-input"
-                        />
-                      </div>
-                    )}
-                  </div>
-                </section>
                 <div>
                   <TextField
                     style={{ width: '230px' }}
@@ -301,6 +239,54 @@ export default function Registrar() {
                     variant="outlined"
                     type="email"
                     className="registrar-input"
+                  />
+                </div>
+                <div>
+                  <TextField
+                    style={{ width: '230px' }}
+                    {...getFieldProps('emergencyContact')}
+                    error={Boolean(touched.emergencyContact && errors.emergencyContact)}
+                    helperText={touched.emergencyContact && errors.emergencyContact}
+                    id="outlined-basic"
+                    label={t('register.emergencyContact')}
+                    variant="outlined"
+                    type="email"
+                    className="registrar-input"
+                  />
+                </div>
+                <div>
+                  <Asynchronous
+                    label={t('r.sgm')}
+                    {...getFieldProps('sgm')}
+                    error={Boolean(touched.sgm && errors.sgm)}
+                    helperText={touched.sgm && errors.sgm}
+                    onChange={(v, r) => setFieldValue('sgm', r)}
+                    options={[
+                      {
+                        id: 'Gnp',
+                        label: 'Gnp',
+                      },
+                      {
+                        id: 'Axa',
+                        label: 'Axa',
+                      },
+                      {
+                        id: 'Metlife',
+                        label: 'Metlife',
+                      },
+                      {
+                        id: 'Mediexcel',
+                        label: 'Mediexcel',
+                      },
+                      {
+                        id: 'Privado',
+                        label: 'Privado',
+                      },
+                      {
+                        id: 'Chubb',
+                        label: 'Chubb',
+                      },
+                    ]}
                   />
                 </div>
                 <section>
@@ -360,54 +346,61 @@ export default function Registrar() {
                     )}
                   </div>
                 </section>
-                <div>
-                  <TextField
-                    style={{ width: '230px' }}
-                    {...getFieldProps('emergencyContact')}
-                    error={Boolean(touched.emergencyContact && errors.emergencyContact)}
-                    helperText={touched.emergencyContact && errors.emergencyContact}
-                    id="outlined-basic"
-                    label={t('register.emergencyContact')}
-                    variant="outlined"
-                    type="email"
-                    className="registrar-input"
-                  />
-                </div>
-                <div>
-                  <Asynchronous
-                    label={t('r.sgm')}
-                    {...getFieldProps('sgm')}
-                    error={Boolean(touched.sgm && errors.sgm)}
-                    helperText={touched.sgm && errors.sgm}
-                    onChange={(v, r) => setFieldValue('sgm', r)}
-                    options={[
-                      {
-                        id: 'Gnp',
-                        label: 'Gnp',
-                      },
-                      {
-                        id: 'Axa',
-                        label: 'Axa',
-                      },
-                      {
-                        id: 'Metlife',
-                        label: 'Metlife',
-                      },
-                      {
-                        id: 'Mediexcel',
-                        label: 'Mediexcel',
-                      },
-                      {
-                        id: 'Privado',
-                        label: 'Privado',
-                      },
-                      {
-                        id: 'Chubb',
-                        label: 'Chubb',
-                      },
-                    ]}
-                  />
-                </div>
+                <section>
+                  <div>
+                    <TextField
+                      style={{ width: '230px' }}
+                      {...getFieldProps('phoneMain')}
+                      error={Boolean(touched.phoneMain && errors.phoneMain)}
+                      helperText={touched.phoneMain && errors.phoneMain}
+                      id="phoneMain"
+                      className="registrar-input"
+                      select
+                      label={t('register.telefonoPrincipal')}
+                      variant="outlined"
+                    >
+                      {phoneMainType.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  </div>
+                  <div>
+                    {formik.values.phoneMain === 'United States + 1' && (
+                      <div>
+                        <label>{t('register.telefonoPrincipal')}</label>
+                        <TextField
+                          {...getFieldProps('phone')}
+                          error={Boolean(touched.phoneMain && errors.phone)}
+                          helperText={touched.phoneMain && errors.phone}
+                          id="outlined-basic"
+                          placeholder="+ 1"
+                          variant="outlined"
+                          type="number"
+                          className="registrar-input"
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    {formik.values.phoneMain === 'Mexico + 52' && (
+                      <div>
+                        <label>{t('register.telefonoPrincipal')}</label>
+                        <TextField
+                          {...getFieldProps('phone')}
+                          error={Boolean(touched.phoneMain && errors.phone)}
+                          helperText={touched.phoneMain && errors.phone}
+                          id="outlined-basic"
+                          placeholder="+ 52"
+                          variant="outlined"
+                          type="number"
+                          className="registrar-input"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </section>
                 <div className="block">
                   <button id="contact-form-form-button" type="button" onClick={prevHandleSubmit}>
                     {t('saved.guardar')}
