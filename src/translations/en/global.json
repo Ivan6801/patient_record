@@ -41,7 +41,8 @@
   "search":{
     "busca": "Search",
     "ip": "Information of the patiente",
-    "found": "Not found character"
+    "found": "Not found character",
+    "intro": "Information of the patiente"
   },
   "r": {
     "nameRequired": "Name is required",
@@ -60,5 +61,11 @@
   },
   "c": {
     "nameCharacters": "Two characters are required"
+  },
+  "i": {
+    "name": "Name",
+    "birthday": "Birthday",
+    "sgm": "Health insurance",
+    "phone": "Main phone"
   }
 }
