@@ -198,6 +198,10 @@ ul {
   }
 }
 
+@media (min-width: 1275px) {
+
+}
+
 @media (min-width: 872px) {
   .contact-wrapper {
     display: grid;
