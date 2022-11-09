@@ -19,14 +19,15 @@ export default function Registrar() {
   const { t } = useTranslation('global');
 
   const FormSchema = Yup.object().shape({
-    name: Yup.string().required(t('r.nameRequired')).min(5, t('c.nameCharacters')),
-    firstName: Yup.string().required(t('r.apRequired')).min(5, 'c.nameCharacters'),
-    lastName: Yup.string().required(t('r.amRequired')).min(5, 'c.nameCharacters'),
+    name: Yup.string().required(t('r.nameRequired')).min(2, t('c.nameCharacters')),
+    firstName: Yup.string().required(t('r.apRequired')).min(2, t('c.nameCharacters')),
+    lastName: Yup.string(),
     dateOfBirth: Yup.string().required(t('register.fechaDeNacimiento')),
     gender: Yup.string().required(t('r.genderRequired')),
     maritalStatus: Yup.string().required(t('r.civilStatus')),
     phoneTypes: Yup.string().required(t('r.phoneTypes')),
-    mainMail: Yup.string().required(t('r.mainEmail')),
+    phoneMain: Yup.string().required(t('register.telefonoPrincipal')),
+    mainMail: Yup.string().email(),
     EmergencyPhone: Yup.string().required(t('r.emergencyPhone')),
     phone: Yup.number()
       .when('$EmergencyPhone', (EmergencyPhone, schema) => ((EmergencyPhone === 'United States + 1') === 'Mexico + 52'
@@ -46,6 +47,7 @@ export default function Registrar() {
       gender: '',
       maritalStatus: '',
       phoneTypes: '',
+      phoneMain: '',
       mainMail: '',
       EmergencyPhone: '',
       phone: '',
@@ -203,6 +205,19 @@ export default function Registrar() {
                 <div>
                   <TextField
                     style={{ width: '230px' }}
+                    {...getFieldProps('phoneMain')}
+                    error={Boolean(touched.phoneMain && errors.phoneMain)}
+                    helperText={touched.phoneMain && errors.phoneMain}
+                    id="outlined-basic"
+                    label={t('register.telefonoPrincipal')}
+                    variant="outlined"
+                    type="number"
+                    className="registrar-input"
+                  />
+                </div>
+                <div>
+                  <TextField
+                    style={{ width: '230px' }}
                     {...getFieldProps('phoneTypes')}
                     error={Boolean(touched.phoneTypes && errors.phoneTypes)}
                     helperText={touched.phoneTypes && errors.phoneTypes}
@@ -242,7 +257,7 @@ export default function Registrar() {
                       id="EmergencyPhone"
                       className="registrar-input"
                       select
-                      label="Teléfono emergencia"
+                      label={t('register.telefonoEmeergencia')}
                       variant="outlined"
                     >
                       {EmergencyPhoneType.map((option) => (

@@ -5,14 +5,14 @@
   "register": {
     "registrar": "PATIENT REGISTER",
     "nombre": "Name",
-    "apellidoPaterno": "First name",
-    "apellidoMaterno": "Last name",
+    "apellidoPaterno": "Last name",
+    "apellidoMaterno": "Other name",
     "fechaDeNacimiento": "Birthday is required",
     "genero": "Gender",
     "estadoCivil": "Civil status",
     "telefonoPrincipal": "Main phone",
     "tipoTelefono": "Phone type",
-    "correoPrincipal": "Main mail",
+    "correoPrincipal": "Main email",
     "telefonoEmeergencia": "Emergency phone",
     "emergencyContact": "Emergency contact"
   },
@@ -49,13 +49,13 @@
     "genderRequired": "Gender is required",
     "civilStatus": "Civil status is required",
     "phoneTypes": "Phone type is required",
-    "mainEmail": "Main mail is required",
+    "mainEmail": "Main email is required",
     "emergencyPhone": "Emergency phone is required",
     "phone": "Phone is required",
     "emergencyContact": "Emergency contact is required",
     "sgm": "Health insurance is required"
   },
   "c": {
-    "nameCharacters": "Five characters are required"
+    "nameCharacters": "Two characters are required"
   }
 }
