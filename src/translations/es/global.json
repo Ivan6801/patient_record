@@ -41,7 +41,8 @@
   "search":{
     "busca": "Buscador",
     "ip": "Información del paciente",
-    "found": "Personaje no encontrado"
+    "found": "Personaje no encontrado",
+    "intro": "Informacion del Paciente"
   },
   "r": {
     "nameRequired": "Nombre requerido",
@@ -60,5 +61,11 @@
   },
   "c": {
     "nameCharacters": "Se requieren dos caracteres"
+  },
+  "i": {
+    "name": "Nombre",
+    "birthday": "Fecha de nacimiento",
+    "sgm": "Seguro de gastos médicos",
+    "phone": "Telefono principal"
   }
 }

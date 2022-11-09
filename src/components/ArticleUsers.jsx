@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function ArticleUsers(props) {
   const { t } = useTranslation('global');
-  const { item } = props;
+  const { item, handleClick } = props;
   return (
     <article key={item.id} className="card">
       <img className="character-img" src={item.picture.large} alt={item.name.title} />
@@ -17,7 +17,9 @@ export default function ArticleUsers(props) {
           :
         </small>
         {' '}
-        {item.name.title}
+        <small className="character-date">
+          {item.name.title}
+        </small>
       </p>
       <p className="character-info">
         <small className="character-name">
@@ -26,6 +28,7 @@ export default function ArticleUsers(props) {
           :
         </small>
         <p className="character-date">{item.dob.date}</p>
+        <button onClick={() => handleClick(item)}>Ver infro</button>
       </p>
     </article>
   );
