@@ -26,10 +26,10 @@ export default function Registrar() {
     gender: Yup.string().required(t('r.genderRequired')),
     maritalStatus: Yup.string().required(t('r.civilStatus')),
     phoneTypes: Yup.string().required(t('r.phoneTypes')),
-    phoneMain: Yup.string().required(t('register.telefonoPrincipal')),
+    phoneMain: Yup.number().required(t('register.telefonoPrincipal')),
     mainMail: Yup.string().email(),
-    EmergencyPhone: Yup.string().required(t('r.emergencyPhone')),
-    phone: Yup.number()
+    EmergencyPhone: Yup.phone().required(t('r.emergencyPhone')),
+    phone: Yup.phone()
       .when('$EmergencyPhone', (EmergencyPhone, schema) => ((EmergencyPhone === 'United States + 1') === 'Mexico + 52'
         ? schema.required(t('r.phone'))
         : schema.nullable().optional()))
