@@ -40,7 +40,8 @@
   },
   "search":{
     "busca": "Buscador",
-    "ip": "Información del paciente"
+    "ip": "Información del paciente",
+    "found": "Personaje no encontrado"
   },
   "r": {
     "nameRequired": "Nombre requerido",
