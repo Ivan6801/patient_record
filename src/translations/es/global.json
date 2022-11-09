@@ -46,6 +46,7 @@
     "nameRequired": "Nombre requerido",
     "apRequired": "Apellido paterno requerido",
     "amRequired": "Apellido Materno requerido",
+    "birthday": "Fecha de nacimiento",
     "genderRequired": "Género requerido",
     "civilStatus": "Estado civil requerido",
     "phoneTypes": "Tipo teléfono requerido",
