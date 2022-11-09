@@ -4,6 +4,8 @@ import React, {
   useState, useEffect, useRef, useMemo, useCallback,
 } from 'react';
 import { Helmet } from 'react-helmet';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 import Header from '../components/Header';
 import Search from '../components/Search';
@@ -11,6 +13,7 @@ import ArticleUsers from '../components/ArticleUsers';
 import './styles/SearchPatients.css';
 
 export default function SearchPatients() {
+  const { t } = useTranslation('global');
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -25,11 +28,12 @@ export default function SearchPatients() {
   const getDatas = async () => {
     setLoading(true);
     if (loading) {
-      const data = await fetch('https://rickandmortyapi.com/api/character/');
-      const users = await data.json();
-      setData(users.results);
+      const response = await fetch('https://randomuser.me/api/?results=30');
+      const data = await response.json();
+      setData(data.results);
     }
     setLoading(false);
+    return data.results;
   };
 
   const handleSearch = useCallback(() => {
@@ -37,7 +41,7 @@ export default function SearchPatients() {
   }, []);
 
   const filteredUsers = useMemo(
-    () => data.filter((user) => user.name.toLowerCase().includes(search.toLowerCase())),
+    () => data.filter((user) => user.name.title.toLowerCase().includes(search.toLowerCase())),
     [data, search],
   );
 
@@ -50,7 +54,12 @@ export default function SearchPatients() {
         <title>Parte #2</title>
         <meta name="description" content="Search register" />
       </Helmet>
-      <Header />
+      <nav className="Search-nav">
+        <div>
+          <Link className="card-link" to="/">Regreso</Link>
+        </div>
+        <Header />
+      </nav>
       <section className="Search">
         <div className="Search-left">
           <div className="Search-input">
@@ -71,9 +80,18 @@ export default function SearchPatients() {
           </div>
           <div className="cards">
             {loading && (<CircularProgress />)}
-            {(!loading && !filteredUsers.length) && <p style={{ color: 'red' }}>Not found character 😮</p>}
+            {(!loading && !filteredUsers.length) && (
+              <p style={{ color: 'red' }}>
+                {t('search.found')}
+                {' '}
+                😮
+              </p>
+            )}
             {filteredUsers.map((item) => (
-              <ArticleUsers key={item.id} item={item} />
+              <ArticleUsers
+                key={item.id}
+                item={item}
+              />
             ))}
           </div>
         </div>

@@ -53,6 +53,7 @@ export default function Registrar() {
       maritalStatus: '',
       phoneTypes: '',
       phoneMain: '',
+      phoneMain1: '',
       mainMail: '',
       EmergencyPhone: '',
       phone: '',

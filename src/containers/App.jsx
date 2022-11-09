@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import Registrar from './Register';
 import SearchPatients from './SearchPatients';
-import Information from './Information';
 import ThemeContext from '../contexts/ThemeContext';
 import './styles/App.css';
 
@@ -20,7 +19,6 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Registrar />} />
             <Route path="/search-patients" element={<SearchPatients />} />
-            <Route path="/:id" element={<Information />} />
           </Routes>
         </BrowserRouter>
       </div>

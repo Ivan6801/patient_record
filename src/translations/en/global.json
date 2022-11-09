@@ -40,7 +40,8 @@
   },
   "search":{
     "busca": "Search",
-    "ip": "Information of the patiente"
+    "ip": "Information of the patiente",
+    "found": "Not found character"
   },
   "r": {
     "nameRequired": "Name is required",
