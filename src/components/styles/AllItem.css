@@ -63,3 +63,32 @@
   color: red;
   transition: .3s;
 }
+
+
+@media (max-width: 550px) {
+  .item-p {
+    margin: 0 0 0 -150px !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .item-p {
+    font-size: 14px !important;
+  }
+  .Icon-check {
+    font-size: 16px !important;
+  }
+  .Icon-delete {
+    font-size: 16px !important;
+  }
+  .item img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 375px) {
+  .item-p {
+    margin: -50px 90px 0 -10px !important;
+  }
+}

@@ -53,9 +53,9 @@
     "emergencyPhone": "Teléfono emergencia requerido",
     "phone": "Teléfono requerido",
     "emergencyContact": "Contacto de emergencia requerido",
-    "sgm": "Seguro de gastos médicos"
+    "sgm": "Seguro de gastos médicos requerido"
   },
   "c": {
-    "nameCharacters": "Se requieren cinco caracteres"
+    "nameCharacters": "Se requieren dos caracteres"
   }
 }
