@@ -46,7 +46,7 @@
     "nameRequired": "Name is required",
     "apRequired": "Last name is required",
     "amRequired": "Other is required",
-    "birthday": "birthday required",
+    "birthday": "birthday",
     "genderRequired": "Gender is required",
     "civilStatus": "Civil status is required",
     "phoneTypes": "Phone type is required",
@@ -54,7 +54,8 @@
     "emergencyPhone": "Emergency phone is required",
     "phone": "Phone is required",
     "emergencyContact": "Emergency contact is required",
-    "sgm": "Health insurance is required"
+    "sgm": "Health insurance is required",
+    "email": "Invalid mail format"
   },
   "c": {
     "nameCharacters": "Two characters are required"
