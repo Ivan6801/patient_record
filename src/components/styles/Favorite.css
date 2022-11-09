@@ -1,0 +1,21 @@
+.character-button {
+  width: 100%;
+  height: 40px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #061949;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.character-button:hover,
+.character-button:focus {
+  background: #3a4879;
+  color: #fff;
+  transition: background-color 0.5s ease-out;
+  outline: 0;
+}
+

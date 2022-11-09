@@ -66,6 +66,7 @@
     "name": "Name",
     "birthday": "Birthday",
     "sgm": "Health insurance",
-    "phone": "Main phone"
+    "phone": "Main phone",
+    "intro": "See intro"
   }
 }
