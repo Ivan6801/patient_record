@@ -1,6 +1,6 @@
 <img src="./src/assets/images/colores.jpg">
 
-<img src="./src/assets/images/rp.png">
+<img src="./src/assets/images/bd.png">
 
 # Getting Started with Create React App
 
