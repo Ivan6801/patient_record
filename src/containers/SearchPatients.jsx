@@ -77,6 +77,11 @@ export default function SearchPatients() {
             ))}
           </div>
         </div>
+        <div className="Search-right">
+          <h1>
+            Informacion del Paciente
+          </h1>
+        </div>
       </section>
     </>
   );

@@ -8,7 +8,7 @@ export default function ArticleUsers(props) {
   const { t } = useTranslation('global');
   const { item } = props;
   return (
-    <Link to={`/search-patients/${item.id}`}>
+    <Link to="/search-patients">
       <article key={item.id} className="card">
         <img className="character-img" src={item.image} alt={item.name} />
         <p className="character-info">
