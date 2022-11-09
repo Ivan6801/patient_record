@@ -3,6 +3,7 @@
 import React, {
   useState, useEffect, useRef, useMemo, useCallback,
 } from 'react';
+import { Helmet } from 'react-helmet';
 import CircularProgress from '@mui/material/CircularProgress';
 import Header from '../components/Header';
 import Search from '../components/Search';
@@ -44,6 +45,11 @@ export default function SearchPatients() {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Parte #2</title>
+        <meta name="description" content="Search register" />
+      </Helmet>
       <Header />
       <section className="Search">
         <div className="Search-left">
