@@ -26,9 +26,14 @@ export default function Registrar() {
     gender: Yup.string().required(t('r.genderRequired')),
     maritalStatus: Yup.string().required(t('r.civilStatus')),
     phoneTypes: Yup.string().required(t('r.phoneTypes')),
-    phoneMain: Yup.number().required(t('register.telefonoPrincipal')),
+    // phoneMain: Yup.number().required(t('register.telefonoPrincipal')),
+    phoneMain: Yup.string()
+      .when('$EmergencyPhone', (phoneMain, schema) => ((phoneMain === 'United States + 1') === 'Mexico + 52'
+        ? schema.required(t('r.phone'))
+        : schema.nullable().optional()))
+      .required(t('register.telefonoPrincipal')),
     mainMail: Yup.string().email(),
-    EmergencyPhone: Yup.number().required(t('r.emergencyPhone')),
+    EmergencyPhone: Yup.string().required(t('r.emergencyPhone')),
     phone: Yup.number()
       .when('$EmergencyPhone', (EmergencyPhone, schema) => ((EmergencyPhone === 'United States + 1') === 'Mexico + 52'
         ? schema.required(t('r.phone'))
@@ -80,6 +85,7 @@ export default function Registrar() {
   ];
   const phoneType = [`${t('phone.tf')}`, `${t('phone.tm')}`];
   const EmergencyPhoneType = ['None', 'United States + 1', 'Mexico + 52'];
+  const phoneMainType = ['None', 'United States + 1', 'Mexico + 52'];
 
   const searchedAll = todos;
 
@@ -160,7 +166,7 @@ export default function Registrar() {
                     helperText={touched.dateOfBirth && errors.dateOfBirth}
                     id="outlined-basic"
                     variant="outlined"
-                    label={t('register.fechaDeNacimiento')}
+                    label={t('r.birthday')}
                     type="date"
                     className="registrar-input"
                   />
@@ -203,19 +209,68 @@ export default function Registrar() {
                     ))}
                   </TextField>
                 </div>
-                <div>
-                  <TextField
-                    style={{ width: '230px' }}
-                    {...getFieldProps('phoneMain')}
-                    error={Boolean(touched.phoneMain && errors.phoneMain)}
-                    helperText={touched.phoneMain && errors.phoneMain}
-                    id="outlined-basic"
-                    label={t('register.telefonoPrincipal')}
-                    variant="outlined"
-                    type="number"
-                    className="registrar-input"
-                  />
-                </div>
+
+                <section>
+                  <div>
+                    <TextField
+                      style={{ width: '230px' }}
+                      {...getFieldProps('phoneMain')}
+                      error={Boolean(touched.phoneMain && errors.phoneMain)}
+                      helperText={touched.phoneMain && errors.phoneMain}
+                      id="phoneMain"
+                      className="registrar-input"
+                      select
+                      label={t('register.telefonoPrincipal')}
+                      variant="outlined"
+                    >
+                      {phoneMainType.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  </div>
+                  <div>
+                    {formik.values.phoneMain === 'United States + 1' && (
+                      <div>
+                        <label>{t('register.telefonoPrincipal')}</label>
+                        <TextField
+                          style={{
+                            width: '100px', position: 'absolute', left: 160, top: 370,
+                          }}
+                          {...getFieldProps('phone')}
+                          error={Boolean(touched.phoneMain && errors.phone)}
+                          helperText={touched.phoneMain && errors.phone}
+                          id="outlined-basic"
+                          placeholder="+ 1"
+                          variant="outlined"
+                          type="number"
+                          className="registrar-input"
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    {formik.values.phoneMain === 'Mexico + 52' && (
+                      <div>
+                        <label>{t('register.telefonoPrincipal')}</label>
+                        <TextField
+                          style={{
+                            width: '100px', position: 'absolute', left: 160, top: 370,
+                          }}
+                          {...getFieldProps('phone')}
+                          error={Boolean(touched.phoneMain && errors.phone)}
+                          helperText={touched.phoneMain && errors.phone}
+                          id="outlined-basic"
+                          placeholder="+ 52"
+                          variant="outlined"
+                          type="number"
+                          className="registrar-input"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </section>
                 <div>
                   <TextField
                     style={{ width: '230px' }}
@@ -271,7 +326,7 @@ export default function Registrar() {
                   <div>
                     {formik.values.EmergencyPhone === 'United States + 1' && (
                       <div>
-                        <label>{t('register.telefonoPrincipal')}</label>
+                        <label>{t('register.telefonoEmeergencia')}</label>
                         <TextField
                           style={{ width: '230px' }}
                           {...getFieldProps('phone')}
