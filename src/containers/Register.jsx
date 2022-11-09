@@ -160,6 +160,7 @@ export default function Registrar() {
                     helperText={touched.dateOfBirth && errors.dateOfBirth}
                     id="outlined-basic"
                     variant="outlined"
+                    label={t('register.fechaDeNacimiento')}
                     type="date"
                     className="registrar-input"
                   />
