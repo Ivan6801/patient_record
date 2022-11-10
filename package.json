@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "cra-template-pwa": "^2.0.0",
     "date-fns": "^2.29.3",
     "formik": "^2.2.9",
     "formik-material-ui": "^4.0.0-alpha.2",
